@@ -1,0 +1,52 @@
+{
+  "name": "n8n-nodes-ballast",
+  "version": "1.0.0",
+  "description": "n8n community node for Ballast: cold email sequences, lead management, and Unibox reply triggers.",
+  "keywords": [
+    "n8n-community-node-package",
+    "cold-email",
+    "ballast",
+    "outreach",
+    "email-deliverability",
+    "sales-automation"
+  ],
+  "license": "MIT",
+  "homepage": "https://ballast.to",
+  "author": {
+    "name": "Ballast",
+    "url": "https://ballast.to"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/useballast/n8n-nodes-ballast.git"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc && node scripts/copy-assets.mjs",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/BallastApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Ballast/Ballast.node.js",
+      "dist/nodes/BallastTrigger/BallastTrigger.node.js"
+    ]
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "n8n-workflow": "^1.77.0",
+    "typescript": "^5.7.3"
+  }
+}
