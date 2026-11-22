@@ -104,20 +104,19 @@ Ballast Trigger (Lead Bounced) -> Verify List Source -> Ballast: Add Suppression
 ```bash
 git clone https://github.com/useballast/n8n-nodes-ballast.git
 cd n8n-nodes-ballast
-npm install --ignore-scripts
+npm install
+npm run dev    # starts n8n with the node loaded and rebuilds on change
+npm run lint   # the same rules n8n uses to verify community nodes
 npm run build
 ```
 
-Link locally to your running n8n instance:
+## Releasing
 
-```bash
-npm link
-cd ~/.n8n/custom
-npm link n8n-nodes-ballast
-```
+Versions are published to npm by GitHub Actions with a provenance statement (`.github/workflows/publish.yml`), which n8n requires for verified community nodes. Run `npm run release` locally: it lints, builds, bumps the version, updates the changelog, tags and pushes, and the tag starts the publish workflow.
 
 ---
 
 ## License
 
 [MIT](LICENSE)
+
